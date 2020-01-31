@@ -34,15 +34,15 @@ public class Personaje {
     
     //CONSTRUCTOR
 
-    public Personaje(String clase, String nombre, String raza, int estatura, int peso, int edad, String descripcion, String nacionalidad, int hp, int cs, int ac, int dg) {
+    public Personaje(String clase, String nombre, String raza, int estatura, int peso, int edad, String descripcion, String nacionalidad) {
         this.clase = clase;
         this.nombre = nombre;
-        this.raza = raza;
+        setRaza(raza);
         this.estatura = estatura;
         this.peso = peso;
         this.edad = edad;
         this.descripcion = descripcion;
-        this.nacionalidad = nacionalidad;
+        setNacionalidad(nacionalidad);
         setHp();
         setCs();
         setAc();

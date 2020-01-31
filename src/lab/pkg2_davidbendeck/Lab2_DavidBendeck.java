@@ -5,6 +5,7 @@
  */
 package lab.pkg2_davidbendeck;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -20,6 +21,13 @@ public class Lab2_DavidBendeck {
         // TODO code application logic here
         Scanner sc = new Scanner(System.in);
         
+        ArrayList<Personaje> personajes = new ArrayList<>();
+        
+        personajes.add(new Personaje("Barbaro","Samus Aran","Humano",178,150,31,"Caza recompensas legendaria","Zebes"));
+        personajes.add(new Personaje("Mago","Gandalf","Mediano",190,180,3000,"El vaganbundo gris","Norfair"));
+        personajes.add(new Personaje("Picaro","Gollum","Humano",75,50,150,"Creatura miserable","Brinstar"));
+        personajes.add(new Personaje("Barbaro","Aragorn","Humano",187,175,100,"Verdadero rey de Gondor","Maridia"));
+        
         OUTER:
         while(true) {
             System.out.print("Menu :\n"
@@ -33,6 +41,7 @@ public class Lab2_DavidBendeck {
             
             switch(opcion) {
                 case 1:
+                    System.out.println("Elija un nombre");
                     break;
                 case 2: 
                     break;
