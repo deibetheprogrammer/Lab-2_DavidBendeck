@@ -6,6 +6,7 @@
 package lab.pkg2_davidbendeck;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -20,6 +21,7 @@ public class Lab2_DavidBendeck {
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner sc = new Scanner(System.in);
+        Random rand = new Random();
         
         String vs;
         
@@ -193,6 +195,132 @@ public class Lab2_DavidBendeck {
                     break;
                 case 5:
                     
+                    System.out.println("Personajes: ");
+                    
+                    posicion = 0;
+                    for (Personaje p : personajes) {
+                        System.out.println("# " +posicion + " : ");
+                        p.imprimir();
+                    }
+                    
+                    System.out.print("Ingrese la posicion del personaje que desea utilizar: ");
+                    posicion = sc.nextInt();
+                    vs = sc.nextLine();
+                    
+                    Personaje jugador = personajes.get(posicion);
+                    Personaje oponente;
+                    
+                    try {
+                        oponente = personajes.get(posicion+1);
+                    } catch (Exception e) {
+                        oponente = personajes.get(posicion-1);
+                    }
+                    
+                    boolean playerDefense = false;
+                    boolean oponentDefense = false;
+                    
+                    boolean jugadorGana = false;
+                    boolean oponenteGana = false;
+                    
+                    while(jugador.getHp() > 0 && oponente.getHp() > 0) {
+                        
+                        System.out.print("Turno del jugador:\n "
+                                + "1) Atacar\n"
+                                + "2) Defender\n"
+                                + "Tu eleccion: ");
+                        opcion = sc.nextInt();
+                        vs = sc.nextLine();
+                        
+                        if (opcion == 1) {
+                            System.out.println("Has elegido atacar");
+                            int ataque = rand.nextInt(101);
+                            
+                            if (oponentDefense) {
+                                if(ataque > oponente.getCs()) {
+                                    oponente.setHpC(oponente.getHp() - jugador.getDg() * 2);
+                                    System.out.printf("Hp del oponente: %d%n",oponente.getHp());
+                                }
+                                
+                                else if (ataque > oponente.getAc() + 15) {
+                                    oponente.setHpC(oponente.getHp() - jugador.getDg());
+                                    System.out.printf("Hp del oponente: %d%n",oponente.getHp());
+                                }
+                            }
+                            
+                            else {
+                                 if (ataque > oponente.getCs()) {
+                                    oponente.setHpC(oponente.getHp() - jugador.getDg() * 2);
+                                    System.out.printf("Hp del oponente: %d%n",oponente.getHp());
+                                } else if (ataque > oponente.getAc()) {
+                                    oponente.setHpC(oponente.getHp() - jugador.getDg());
+                                    System.out.printf("Hp del oponente: %d%n",oponente.getHp());
+                                }
+                            } 
+                        }
+                        
+                        else{
+                            System.out.println("Has elegido defender");
+                            playerDefense = true;
+                        }
+                        
+                        //Reset de la defensa del oponente
+                        if (oponentDefense) {
+                            oponentDefense = false;
+                        }
+                        
+                        //Turno de la máquina
+                        System.out.println("Turno del oponente: ");
+                        
+                        opcion = 1 + rand.nextInt(3);
+                        
+                        if (opcion == 1) {
+                            System.out.println("El oponente ha elegido atacar");
+                            int ataque = rand.nextInt(101);
+                            
+                            if (playerDefense) {
+                                if(ataque > jugador.getCs()) {
+                                    jugador.setHpC(jugador.getHp() - oponente.getDg() * 2);
+                                    System.out.printf("Hp del jugador: %d%n",jugador.getHp());
+                                }
+                                
+                                else if (ataque > jugador.getAc() + 15) {
+                                    jugador.setHpC(jugador.getHp() - oponente.getDg());
+                                    System.out.printf("Hp del jugador: %d%n",jugador.getHp());
+                                }
+                            }
+                            
+                            else {
+                                 if (ataque > jugador.getCs()) {
+                                    jugador.setHpC(jugador.getHp() - oponente.getDg() * 2);
+                                    System.out.printf("Hp del jugador: %d%n",jugador.getHp());
+                                } else if (ataque > jugador.getAc()) {
+                                    jugador.setHpC(jugador.getHp() - oponente.getDg());
+                                    System.out.printf("Hp del jugador: %d%n",jugador.getHp());
+                                }
+                            } 
+                        }
+                        
+                        else {
+                            System.out.println("El oponente ha decidido defender");
+                            oponentDefense = true;
+                        }
+                        
+                        //Reset de la defensa del jugador
+                        if (playerDefense) {
+                            playerDefense = false;
+                        }
+                        
+                        if (oponente.getHp() < 0) {
+                            jugadorGana = true;
+                        }
+                    }
+                    
+                    if (jugadorGana) {
+                        System.out.println("Felicidades has ganado!");
+                    }
+                    else{
+                        System.out.println("Ha ganado tu oponente");
+                    }
                     break;
                 case 6:
                     break OUTER;

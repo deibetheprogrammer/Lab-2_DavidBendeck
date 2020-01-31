@@ -167,6 +167,10 @@ public class Personaje {
                 break;
         }
     }
+    
+    public void setHpC(int hp) {
+        this.hp = hp;
+    }
 
     public void setCs() {
         switch (clase) {
