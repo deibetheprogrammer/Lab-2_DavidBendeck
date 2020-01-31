@@ -105,12 +105,12 @@ public class Personaje {
     
     //SETTERS
 
-    public void setRand(Random rand) {
-        this.rand = rand;
-    }
-
     public void setClase(String clase) {
-        this.clase = clase;
+        if (clase.equals("Clerigo") || clase.equals("Barbaro") || clase.equals("Mago") || clase.equals("Picaro"))
+            this.clase = clase;
+        else{
+            this.clase = "Barbaro";
+        }
     }
 
     public void setNombre(String nombre) {
@@ -220,6 +220,10 @@ public class Personaje {
         }
     }
     
+    //METODOS
     
+    public void imprimir() {
+        System.out.printf(" Clase: %s%n Nombre: %s%n Raza: %s%n Estatura: %d%n Peso: %d%n Edad: %d%n Descripción: %s%n Nacionalidad: %s%n HP: %d%n CS: %d%n AC: %d%n DG: %d%n",clase,nombre,raza,estatura,peso,edad,descripcion,nacionalidad,hp,cs,ac,dg);
+    }
     
 }

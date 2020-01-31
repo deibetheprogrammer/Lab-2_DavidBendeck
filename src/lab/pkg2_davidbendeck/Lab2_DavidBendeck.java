@@ -21,6 +21,8 @@ public class Lab2_DavidBendeck {
         // TODO code application logic here
         Scanner sc = new Scanner(System.in);
         
+        String vs;
+        
         ArrayList<Personaje> personajes = new ArrayList<>();
         
         personajes.add(new Personaje("Barbaro","Samus Aran","Humano",178,150,31,"Caza recompensas legendaria","Zebes"));
@@ -38,12 +40,54 @@ public class Lab2_DavidBendeck {
                     + "5) Salir\n"
                     + "Su opción: ");
             int opcion = sc.nextInt();
+            vs = sc.nextLine();
             
             switch(opcion) {
                 case 1:
-                    System.out.println("Elija un nombre");
+                    System.out.println("Elija una clase (Clerigo,Barbaro,Mago,Picaro) si ingresa una clase invalida el default sera Barbaro: ");
+                    String clase = sc.nextLine();
+                    
+                    
+                    System.out.print("Elija un nombre: ");
+                    String nombre = sc.nextLine();
+                    
+                    
+                    System.out.println("Elija una raza (Mediano,Enano,Elfo,Humano) si ingresa una raza invalida el default sera Humano: ");
+                    String raza = sc.nextLine();
+                    
+                    
+                    System.out.print("Ingrese la estatura en cm: ");
+                    int estatura = sc.nextInt();
+                    vs = sc.nextLine();
+                    
+                    
+                    System.out.print("Ingrese el peso en libras: ");
+                    int peso = sc.nextInt();
+                    vs = sc.nextLine();
+                    
+                    
+                    System.out.print("Ingrese la edad en años: ");
+                    int edad = sc.nextInt();
+                    vs = sc.nextLine();
+                    
+                    
+                    System.out.print("Ingrese una descripción: ");
+                    String descripcion = sc.nextLine();
+                    
+                    
+                    System.out.println("Elija una nacionalidad (Norfair,Brinstar,Maridia,Zebes,Crateria) si ingresa una nacionalidad invalida el default sera Zebes: ");
+                    String nacionalidad = sc.nextLine();
+                    
+                    personajes.add(new Personaje(clase,nombre,raza,estatura,peso,edad,descripcion,nacionalidad));
+                    
+                    personajes.get(personajes.size()-1).imprimir();
                     break;
-                case 2: 
+                case 2:
+                    System.out.println("Personajes: ");
+                    
+                    for (Personaje p : personajes) {
+                        
+                    }
                     break;
                 case 3:
                     break;
