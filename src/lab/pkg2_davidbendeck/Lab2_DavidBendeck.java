@@ -93,7 +93,9 @@ public class Lab2_DavidBendeck {
                     for (Personaje p : personajes) {
                         System.out.println("# " +posicion + " : ");
                         p.imprimir();
+                        posicion++;
                     }
+                    posicion = 0;
                     
                     System.out.print("Ingrese la posicion del personaje que desea modificar: ");
                     posicion = sc.nextInt();
@@ -185,7 +187,9 @@ public class Lab2_DavidBendeck {
                     for (Personaje p : personajes) {
                         System.out.println("# " +posicion + " : ");
                         p.imprimir();
+                        posicion++;
                     }
+                    posicion = 0;
                     
                     System.out.print("Ingrese la posicion del personaje que desea eliminar: ");
                     posicion = sc.nextInt();
@@ -201,7 +205,9 @@ public class Lab2_DavidBendeck {
                     for (Personaje p : personajes) {
                         System.out.println("# " +posicion + " : ");
                         p.imprimir();
+                        posicion++;
                     }
+                    posicion = 0;
                     
                     System.out.print("Ingrese la posicion del personaje que desea utilizar: ");
                     posicion = sc.nextInt();
@@ -245,6 +251,10 @@ public class Lab2_DavidBendeck {
                                     oponente.setHpC(oponente.getHp() - jugador.getDg());
                                     System.out.printf("Hp del oponente: %d%n",oponente.getHp());
                                 }
+                                
+                                else {
+                                    System.out.println("El ataque no ha pasado");
+                                }
                             }
                             
                             else {
@@ -254,6 +264,10 @@ public class Lab2_DavidBendeck {
                                 } else if (ataque > oponente.getAc()) {
                                     oponente.setHpC(oponente.getHp() - jugador.getDg());
                                     System.out.printf("Hp del oponente: %d%n",oponente.getHp());
+                                }
+                                
+                                 else {
+                                    System.out.println("El ataque no ha pasado");
                                 }
                             } 
                         }
@@ -287,6 +301,10 @@ public class Lab2_DavidBendeck {
                                     jugador.setHpC(jugador.getHp() - oponente.getDg());
                                     System.out.printf("Hp del jugador: %d%n",jugador.getHp());
                                 }
+                                
+                                else {
+                                    System.out.println("El ataque no ha pasado");
+                                }
                             }
                             
                             else {
@@ -296,6 +314,10 @@ public class Lab2_DavidBendeck {
                                 } else if (ataque > jugador.getAc()) {
                                     jugador.setHpC(jugador.getHp() - oponente.getDg());
                                     System.out.printf("Hp del jugador: %d%n",jugador.getHp());
+                                }
+                                
+                                else {
+                                    System.out.println("El ataque no ha pasado");
                                 }
                             } 
                         }
