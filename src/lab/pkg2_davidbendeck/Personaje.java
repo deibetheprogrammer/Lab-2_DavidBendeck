@@ -24,7 +24,7 @@ public class Personaje {
     private int peso;
     private int edad;
     private String descripcion;
-    private String Nacionalidad;
+    private String nacionalidad;
     
     //asignados
     private int hp;
@@ -34,7 +34,7 @@ public class Personaje {
     
     //CONSTRUCTOR
 
-    public Personaje(String clase, String nombre, String raza, int estatura, int peso, int edad, String descripcion, String Nacionalidad, int hp, int cs, int ac, int dg) {
+    public Personaje(String clase, String nombre, String raza, int estatura, int peso, int edad, String descripcion, String nacionalidad, int hp, int cs, int ac, int dg) {
         this.clase = clase;
         this.nombre = nombre;
         this.raza = raza;
@@ -42,7 +42,7 @@ public class Personaje {
         this.peso = peso;
         this.edad = edad;
         this.descripcion = descripcion;
-        this.Nacionalidad = Nacionalidad;
+        this.nacionalidad = nacionalidad;
         setHp();
         setCs();
         setAc();
@@ -84,7 +84,7 @@ public class Personaje {
     }
 
     public String getNacionalidad() {
-        return Nacionalidad;
+        return nacionalidad;
     }
 
     public int getHp() {
@@ -118,7 +118,11 @@ public class Personaje {
     }
 
     public void setRaza(String raza) {
-        this.raza = raza;
+        if (raza.equals("Mediano") || raza.equals("Enano") || raza.equals("Elfo") || raza.equals("Humano"))
+            this.raza = raza;
+        else{
+            this.raza = "Humano";
+        }
     }
 
     public void setEstatura(int estatura) {
@@ -137,24 +141,83 @@ public class Personaje {
         this.descripcion = descripcion;
     }
 
-    public void setNacionalidad(String Nacionalidad) {
-        this.Nacionalidad = Nacionalidad;
-    }
-
-    public void setHp() {
+    public void setNacionalidad(String nacionalidad) {
+        if (nacionalidad.equals("Norfair") || nacionalidad.equals("Brinstar") || nacionalidad.equals("Maridia") || nacionalidad.equals("Zebes") || nacionalidad.equals("Crateria"))
+            this.nacionalidad = nacionalidad;
+        else {
+            this.nacionalidad = "Zebes";
+        }
         
     }
 
+    public void setHp() {
+
+        switch (raza) {
+            case "Mediano":
+                hp = 50 + rand.nextInt(11);
+                break;
+            case "Enano":
+                hp = 80 + rand.nextInt(21);
+                break;
+            case "Elfo":
+                hp = 50 + rand.nextInt(21);
+                break;
+            case "Humano":
+                hp = 40 + rand.nextInt(36);
+                break;
+        }
+    }
+
     public void setCs() {
+        switch (clase) {
+            case "Clerigo":
+                cs = 97;
+                break;
+            case "Barbaro":
+                cs = 93;
+                break;
+            case "Mago":
+                cs = 101;
+                break;
+            case "Picaro":
+                cs = 80;
+                break;
+        }
         
     }
 
     public void setAc() {
-        
+        switch (clase) {
+            case "Clerigo":
+                ac = 40;
+                break;
+            case "Barbaro":
+                ac = 65;
+                break;
+            case "Mago":
+                ac = 20;
+                break;
+            case "Picaro":
+                ac = 50;
+                break;
+        }
     }
 
     public void setDg() {
-       
+       switch (clase) {
+            case "Clerigo":
+                dg = 5 + rand.nextInt(11);
+                break;
+            case "Barbaro":
+                dg = 15 + rand.nextInt(16);
+                break;
+            case "Mago":
+                dg = 5 + rand.nextInt(6);
+                break;
+            case "Picaro":
+                dg = 15 + rand.nextInt(11);
+                break;
+        }
     }
     
     
